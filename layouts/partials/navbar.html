@@ -1,0 +1,32 @@
+<nav>
+	<div class="toggle">
+		<input type="checkbox" id="drawerToggle">
+
+		<label for="drawerToggle">
+			<svg viewBox="0 0 24 24" width="32" height="32"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+			<div class="overlay"></div>
+		</label>
+
+		<aside class="mobile">
+			{{ partial "drawer.html" . }}
+		</aside>
+	</div>
+
+	<a class="title" href="/">
+		{{ $logo := printf "/img/%s.png" (site.Title | anchorize) }}
+		<img src="{{ site.Params.logo | default $logo }}" width="40" height="40">
+		{{ cond .IsHome "" site.Title }}
+	</a>
+
+	<div class="items">
+		{{ range site.Data.navbar }}
+			<a href="{{ .href }}">
+				{{ .text }}
+
+				{{ if eq "http" (substr .href 0 4) }}
+					{{ partial "icon" (dict "name" "launch" "size" 14) }}
+				{{ end }}
+			</a>
+		{{ end }}
+	</div>
+</nav>

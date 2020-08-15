@@ -1,0 +1,34 @@
+{{ define "main" }}
+	<div class="cntr">
+		<header>
+			{{ with .Params.image }}
+				<img src="{{ printf `/img/%s` . }}" width="36" height="36" loading="lazy">
+			{{ end }}
+
+			<h1>{{ .Title }}</h1>
+		</header>
+
+		<hr>
+
+		{{ $metas := slice }}
+
+		{{ if site.Params.showReadTime }}
+			{{ $metas = $metas | append (printf "~%dm read" .ReadingTime) }}
+		{{ end }}
+
+		{{ with .PublishDate }}
+			{{ $metas = $metas | append (.Format "Jan 02, 2006") }}
+		{{ end }}
+
+		{{ with .Lastmod }}
+			{{ $metas = $metas | append (.Format "Jan 02, 2006" | printf "Last Updated: %v") }}
+		{{ end }}
+
+		{{ range $i, $v := $metas }}
+			<small>{{ . }}</small>
+			{{ if lt $i (sub (len $metas) 1) }}<small class="sep"></small>{{ end }}
+		{{ end }}
+
+		<article>{{ .Content }}</article>
+	</div>
+{{ end }}

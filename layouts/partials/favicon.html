@@ -1,0 +1,3 @@
+{{ $implied := printf "/img/%s.png" (site.Title | anchorize) }}
+
+<link rel="shortcut icon" href="{{ site.Params.favicon | default $implied }}">

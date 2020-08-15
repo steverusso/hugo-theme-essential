@@ -1,0 +1,31 @@
+article {
+	line-height: 1.75;
+}
+article h2, article h3 {
+	color: #333;
+	font-weight: 600;
+}
+article h2 {
+	margin-top: 2rem;
+}
+article p {
+	margin: 1.25rem 0;
+}
+article p > code, article li > code {
+	background: #e3e3e3;
+	border-radius: 2px;
+	padding: 0.25rem 0.75rem;
+}
+
+blockquote {
+	border-left: 3px solid #ccc;
+	font-style: italic;
+	margin: 1.5rem 0 2.5rem 1rem;
+	padding-left: 1rem;
+}
+blockquote > * {
+	margin: 0.75rem 0 !important;
+}
+blockquote *:not(a) {
+	color: #aaa !important;
+}

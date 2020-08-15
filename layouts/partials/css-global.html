@@ -1,0 +1,19 @@
+<!-- This is the CSS that will be included on all pages. -->
+
+<!--
+	Get the paths of all the stylesheets to process. Users can include additional
+	stylesheet files by putting the paths (relative to the assets directory) in
+	the `stylesheets` site parameter.
+-->
+{{ $names := apply (slice "config" "general" "navbar" "footer" "article") "printf" "%s.css" "." }}
+{{ $names := $names | append (site.Params.stylesheets | default slice) }}
+
+<!-- Build a slice containing each stylesheet as a resource. -->
+{{ $sheets := slice }}{{ range $names }}
+	{{ $sheets = $sheets | append (resources.Get .) }}
+{{ end }}
+
+<!-- Concatenate the stylesheet resources, minify, and fingerprint the bundle. -->
+{{ $css := $sheets | resources.Concat "/css/main.css" | minify | fingerprint "sha512" }}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">

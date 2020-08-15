@@ -1,0 +1,35 @@
+{{ define "main" }}
+	<div class="cntr">
+		<h1>{{ replace .Title "-" " " | title }}</h1>
+		<hr>
+
+		<div class="preview-list">
+			<!-- Use the .Pages variable first. -->
+			<!-- If there are pages set in the section Params, then use those instead. -->
+			{{ $pages := .Pages }}
+			{{ with .Params.pages }}
+				{{ $pages = slice }}
+
+				{{ range . }}
+					{{ $pages = $pages | append ($.GetPage .) }}
+				{{ end }}
+			{{ end }}
+
+			{{ range $pages }}
+				<div>
+					<header>
+						{{ with .Params.image }}
+							<img src="{{ printf `/img/%s` . }}" width="20" height="20" loading="lazy">
+						{{ end }}
+						<h2>{{ .Title }}</h2>
+					</header>
+
+					<p>
+						{{ .Summary | truncate 175 }}
+						<a href="{{ .RelPermalink }}">Read More</a>
+					</p>
+				</div>
+			{{ end }}
+		</div>
+	</div>
+{{ end }}

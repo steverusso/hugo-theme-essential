@@ -1,0 +1,42 @@
+{{ $sections := site.Sections }}
+
+{{ with site.Params.drawer.sections }}
+	{{ $sections = slice }}
+	{{ range . }}
+		{{ $sections = $sections | append (site.GetPage "section" .) }}
+	{{ end }}
+{{ end }}
+
+{{ range $sections }}
+	<details style="padding: 0.5rem;" {{ if $.IsDescendant . | or $.IsHome }}open{{ end }}>
+		<summary>
+			{{ if site.Params.drawer.disableSectionLinks }}
+				<span class="title">{{ .Title }}</span>
+			{{ else }}
+				<a href="{{ .RelPermalink }}" class="title">{{ .Title }}</a>
+			{{ end }}
+		</summary>
+
+		{{ range .Pages }}
+			{{ if .IsSection }}
+				<details class="mt-3 pl-3" {{ if $.IsDescendant . }}open{{ end }}>
+					<summary>
+						<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+					</summary>
+
+					<ul>
+						{{ range .Pages }}
+							<li>
+								<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+							</li>
+						{{ end }}
+					</ul>
+				</details>
+			{{ else }}
+				<div class="mt-3">
+					<a class="pl-6" href="{{ .RelPermalink }}">{{ .Title }}</a>
+				</div>
+			{{ end }}
+		{{ end }}
+	</details>
+{{ end }}

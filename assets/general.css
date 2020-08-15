@@ -1,0 +1,120 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+body {
+	background: #f8f8f8;
+	color: #666;
+	display: flex;
+	flex-direction: column;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,Roboto,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji !important;
+	margin: 0;
+	padding-top: var(--navHeight);
+	word-spacing: 0.075rem;
+}
+
+img {
+	display: table;
+}
+
+a {
+	color: #039BE5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	font-size: 2.25rem;
+}
+
+hr {
+	border: 0;
+	border-top: thin solid #ddd;
+	display: block;
+	margin: 1.5rem 0;
+	max-height: 0px;
+	max-width: 100%;
+}
+
+pre {
+	padding: 1rem;
+}
+
+
+header {
+	display: flex;
+	align-items: center;
+}
+header > img {
+	margin-right: 1rem;
+}
+
+.cntr {
+	max-width: 850px;
+	margin: auto;
+	padding: 3rem 1rem;
+}
+.cntr.home {
+	padding: 0 1rem;
+}
+
+.heading h1 {
+	margin-bottom: 0.75rem;
+}
+.heading span {
+	font-size: 0.95rem;
+	color: #aaa;
+	padding-left: 1rem;
+}
+
+.title { font-size: 1.2rem }
+.caption { font-size: 0.9rem }
+
+.pl-3 { padding-left: 0.75rem !important }
+.pl-6 { padding-left: 1.5rem !important }
+.mt-1 { margin-top: 0.25rem !important }
+.mt-3 { margin-top: 0.75rem !important }
+
+.preview-list > div {
+	margin-top: 3.5rem;
+}
+.preview-list p {
+	line-height: 1.75;
+}
+.preview-list > div h2 {
+	color: #000;
+}
+
+.spacer {
+	padding: 0.5rem 0;
+}
+small {
+	color: #8f8f8f !important;
+}
+small.sep {
+	border: 0;
+	border-right: 2px solid #ccc;
+	margin: 0 0.75rem 0 0.5rem;
+	max-width: 0px !important;
+	min-height: 100%;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

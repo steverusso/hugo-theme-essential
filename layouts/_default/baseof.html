@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		{{ partialCached "css-global.html" . }}
+
+		{{ block "style" . }} {{ end }}
+
+		{{ partialCached "favicon.html" . }}
+
+		<title>{{ .Site.Title }} {{ block "title" . }} {{ with .Title }} | {{ . }} {{ end }} {{ end }}</title>
+	</head>
+
+	<body>
+		{{ partialCached "navbar.html" . .IsHome }}
+
+		<aside>
+			{{ partial "drawer.html" . }}
+		</aside>
+
+		<main>
+			{{ block "main" . }} {{ end }}
+
+			{{ partialCached "footer.html" . }}
+		</main>
+	</body>
+</html>
