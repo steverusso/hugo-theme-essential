@@ -1,3 +1,32 @@
+input.toggle {
+	display: none;
+}
+input.toggle:checked ~ label .overlay {
+	display: flex;
+	z-index: 5;
+}
+input.toggle:checked ~ aside {
+	transform: translateX(0);
+}
+input.toggle ~ label {
+	cursor: pointer;
+}
+
+aside {
+	background: #f7f7f7;
+	border-right: 1px solid #ddd;
+	width: var(--sidebarWidth);
+	overflow: auto;
+	padding-top: 1rem;
+	padding-left: 1.5rem;
+	position: fixed;
+	top: var(--navHeight);
+	left: 0;
+	bottom: 0;
+	transition: transform 0.35s;
+	z-index: 5;
+}
+
 aside > details {
 	padding: 0.5rem;
 }
