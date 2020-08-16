@@ -90,16 +90,3 @@ main {
 		transform: translateX(-150%);
 	}
 }
-
-summary {
-	list-style-type: "▹ ";
-}
-details[open] summary {
-	list-style-type: "▿ ";
-}
-summary::-webkit-details-marker {
-}
-
-details ul {
-	list-style-type: circle;
-}

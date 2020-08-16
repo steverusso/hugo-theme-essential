@@ -7,36 +7,34 @@
 	{{ end }}
 {{ end }}
 
-{{ range $sections }}
-	<details style="padding: 0.5rem;" {{ if $.IsDescendant . | or $.IsHome }}open{{ end }}>
-		<summary>
-			{{ if site.Params.drawer.disableSectionLinks }}
-				<span class="title">{{ .LinkTitle }}</span>
-			{{ else }}
-				<a href="{{ .RelPermalink }}" class="title">{{ .LinkTitle }}</a>
-			{{ end }}
-		</summary>
+<aside>
+	{{ range $sections }}
+		<details {{ if $.IsDescendant . | or $.IsHome }}open{{ end }}>
+			<summary>
+				{{ if site.Params.drawer.disableSectionLinks }}
+					<span>{{ .LinkTitle }}</span>
+				{{ else }}
+					<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+				{{ end }}
+			</summary>
 
-		{{ range .Pages }}
-			{{ if .IsSection }}
-				<details class="mt-3 pl-3" {{ if $.IsDescendant . }}open{{ end }}>
-					<summary>
-						<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-					</summary>
+			{{ range .Pages }}
+				{{ if .IsSection }}
+					<details {{ if $.IsDescendant . }}open{{ end }}>
+						<summary>
+							<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+						</summary>
 
-					<ul>
-						{{ range .Pages }}
-							<li>
-								<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-							</li>
-						{{ end }}
-					</ul>
-				</details>
-			{{ else }}
-				<div class="mt-3">
-					<a class="pl-6" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-				</div>
+						<ul>
+							{{ range .Pages }}
+								<li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+							{{ end }}
+						</ul>
+					</details>
+				{{ else }}
+					<div><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></div>
+				{{ end }}
 			{{ end }}
-		{{ end }}
-	</details>
-{{ end }}
+		</details>
+	{{ end }}
+</aside>

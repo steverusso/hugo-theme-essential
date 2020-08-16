@@ -5,7 +5,7 @@
 	stylesheet files by putting the paths (relative to the assets directory) in
 	the `stylesheets` site parameter.
 -->
-{{ $names := apply (slice "config" "general" "navbar" "footer" "article") "printf" "%s.css" "." }}
+{{ $names := apply (slice "config" "general" "navbar" "drawer" "footer" "article") "printf" "%s.css" "." }}
 {{ $names := $names | append (site.Params.stylesheets | default slice) }}
 
 <!-- Build a slice containing each stylesheet as a resource. -->

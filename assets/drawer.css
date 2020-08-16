@@ -1,0 +1,27 @@
+aside > details {
+	padding: 0.5rem;
+}
+aside > details > summary {
+	font-size: 1.2rem;
+}
+aside > details > details {
+	margin-top: 0.75rem;
+	padding-left: 1.25rem;
+}
+aside > details > div {
+	margin-top: 0.5rem;
+	padding-left: 2rem;
+}
+
+summary {
+	list-style-type: "▹ ";
+}
+details[open] summary {
+	list-style-type: "▿ ";
+}
+summary::-webkit-details-marker {
+}
+
+details ul {
+	list-style-type: circle;
+}

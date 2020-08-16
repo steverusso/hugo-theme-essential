@@ -16,9 +16,7 @@
 	<body>
 		{{ partialCached "navbar.html" . .IsHome }}
 
-		<aside>
-			{{ partial "drawer.html" . }}
-		</aside>
+		{{ partial "drawer.html" . }}
 
 		<main>
 			{{ block "main" . }} {{ end }}
